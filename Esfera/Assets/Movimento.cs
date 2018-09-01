@@ -6,34 +6,37 @@ public class Movimento : MonoBehaviour {
 	Rigidbody componente;
 	public int velocidade = 0;
 	public int tamanhoPulo = 0;
+
+	Vector3 movimento;
+	Vector3 pulo;
 	bool podePular = false;
 
+	// Use this for initialization
 	void Start () {
-		componente = GetComponent<Rigidbody> ();
+		Debug.Log("oi");
+        componente = GetComponent<Rigidbody> ();
+		
 	}
-	
-	void OnCollisionEnter(Collision outro){
+	void onColliderEnter (Collision outro){
 		podePular = true;
 	}
-
+	// Update is called once per frame
 	void Update () {
-		Mover ();
+		Mover();
 		Pular ();
-	}
 
+}
 	void Mover(){
-		float movHor = Input.GetAxis ("Horizontal");
-		float movVer = Input.GetAxis ("Vertical");
-		Vector3 movimento = new Vector3 (movHor, 0, movVer);
-		componente.AddForce (movimento*velocidade);
+		float MovHor = Input.GetAxis ("Horizontal");
+		float MovVer = Input.GetAxis ("Vertical");
+		movimento = new Vector3 (MovHor, 0, MovVer);
+		componente.AddForce (movimento * velocidade);
 	}
-
 	void Pular(){
-		if (Input.GetButtonDown("Jump") && podePular) {
+		if (Input.GetButtonDown ("Jump") && podePular) {
 			podePular = false;
-			Vector3 pulo = new Vector3 (0, tamanhoPulo, 0);
+			pulo = new Vector3 (0, tamanhoPulo, 0);
 			componente.AddForce (pulo, ForceMode.Impulse);
 		}
 	}
 }
-
