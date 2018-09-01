@@ -1,12 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Bola : MonoBehaviour {
 	private Rigidbody componenteRb;
 	public int velocidade = 5;
+	public Text textoPontuacao;
+	private int pontos;
 
 	void Start () {
+		pontos = 0;
+		textoPontuacao.text = "Pontos" + pontos;
 		componenteRb = GetComponent<Rigidbody> ();
 	}
 	void OnTriggerEnter(Collider outro){
