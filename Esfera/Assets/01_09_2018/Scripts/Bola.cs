@@ -22,9 +22,9 @@ public class Bola : MonoBehaviour {
 	//}
 
 	void Update () {
-		float x = Input.GetAxis ("Horizontal");
+		
 		//Debug.Log (x  + " | " + z );
-		Vector3 movimento = new Vector3 (x, 0, 1);
-		componenteRb.AddForce (movimento * velocidade);
+		//Vector3 movimento = new Vector3 (x, 0, 1);
+		//componenteRb.AddForce (movimento * velocidade);
 	}
 }
